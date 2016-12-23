@@ -1,0 +1,28 @@
+﻿@using TestShopApp.Models
+
+@model IEnumerable<TestShopApp.Models.Member>
+@{
+    Layout = null;
+}
+
+<div>
+    <h3>LIST OF MEMBERS</h3>
+    <table>
+        <tr>
+            <td><p>ID</p></td>
+            <td><p>NAME</p></td>
+            <td><p>SURNAME</p></td>
+            <td><p>E-MAIL</p></td>
+            <td></td>
+        </tr>
+        @foreach (TestShopApp.Models.Member b in Model)
+            {
+            <tr>
+                <td><p>@b.id</p></td>
+                <td><p>@b.name</p></td>
+                <td><p>@b.surname</p></td>
+                <td><p>@b.email</p></td>
+            </tr>
+        }
+    </table>
+</div>

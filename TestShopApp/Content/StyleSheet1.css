@@ -1,0 +1,19 @@
+﻿div {
+    padding-left: 30%;
+   background-color: #808080;
+   color:  #0094ff;
+ }
+table {
+  border: 2px solid black;
+}
+
+td {
+  border: 2px solid black;
+}
+
+tr {
+  border: 2px solid black;
+}
+h3{
+     padding-left: 8%;
+}

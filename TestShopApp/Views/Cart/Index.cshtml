@@ -1,0 +1,44 @@
+﻿@model TestShopApp.Models.CartIndexViewModel
+
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet">
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+<div style="text-align:center">
+    <h2 style="text-align: center">Your cart</h2>
+    <table width="90" align="center" class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="text-align: center">Quantity</th>
+                <th align="left">Item</th>
+                <th align="right">Price</th>
+                <th style="text-align: center">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Cart.Lines)
+            {
+                <tr>
+                    <td style="text-align: center">@line.Quantity</td>
+                    <td align="left">@line.Product.name</td>
+                    <td align="right">@line.Product.price $</td>
+                    <td align="right">@((line.Quantity * line.Product.price).ToString()) $</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" align="right">Total:</td>
+                <td align="right">
+                    @Model.Cart.ComputeTotalValue().ToString() $
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+<div style="text-align:center">
+    <button  type="submit" class="btn-success">
+        <a style="color:aliceblue; text-decoration: none" href="@Model.ReturnUrl">Continue shopping</a>
+    </button>
+</div>

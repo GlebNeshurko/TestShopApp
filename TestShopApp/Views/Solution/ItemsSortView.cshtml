@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TestShopApp.Models.Item>
+    <div id="itemsTable">
+    <h3>Objects table</h3>
+    <table class="table table-bordered">
+        <tr>
+            <td><p>ID</p></td>
+            <td><p>NAME</p></td>
+            <td><p>TYPE</p></td>
+            <td><p>MATERIAL</p></td>
+            <td><p>PRICE</p></td>
+        </tr>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td><p>@p.id</p></td>
+                <td><p>@p.name</p></td>
+                <td><p>@p.type</p></td>
+                <td><p>@p.material</p></td>
+                <td><p>@p.price</p></td>
+            </tr>
+        }
+    </table>
+</div>

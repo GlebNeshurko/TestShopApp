@@ -1,0 +1,65 @@
+﻿@using TestShopApp.Models
+
+@model IEnumerable<TestShopApp.Models.Item>
+@{
+        Layout = "~/Views/Shared/MasterLayout.cshtml";;
+ }
+<link href="~/Content/bootstrap.css" rel="stylesheet">
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"
+        type="text/javascript"></script>
+<div class="container" style="margin-top: 10px">
+    <div class="container" style="margin-top:5px;">
+        @using (Ajax.BeginForm("ItemsSort", "Solution", new AjaxOptions
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "itemsTable",
+            LoadingElementDuration = 2000,
+            LoadingElementId = "loading"
+        }))
+        {
+            <div class="input-group pull-right" style="display:inline-block; z-index: 1">
+                <input type="text" name="SearchingName" class="form-control" style="width:auto; margin-right:5px;" placeholder="Input value..." />
+                <button type="submit" value="Searching item by name" class="btn btn-success pull-right">Search</button>
+            </div>
+        }
+    </div>
+
+    <div class="container" id="itemsTable" style="text-align:center; position: relative">
+        <img id="loading" src="@Url.Content("~/Content/Loaders/giphy.gif")" style="height:200px; width:200px; display:none; position: absolute; z-index: 2" />
+        <h3>Objects table</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>ID <span class="glyphicon glyphicon-arrow-down"></span></th>
+                <th>NAME <span class="glyphicon glyphicon-arrow-down"></span></th>
+                <th>TYPE <span class="glyphicon glyphicon-arrow-down"></span></th>
+                <th>MATERIAL <span class="glyphicon glyphicon-arrow-down"></span></th>
+                <th>PRICE <span class="glyphicon glyphicon-arrow-down"></span></th>
+            </tr>
+            @foreach (TestShopApp.Models.Item b in Model)
+            {
+                <tr class="table table-bordered">
+                    <td><p>@b.id</p></td>
+                    <td><p>@b.name</p></td>
+                    <td><p>@b.type</p></td>
+                    <td><p>@b.material</p></td>
+                    <td><p>@b.price $</p></td>
+                    <td class="itemAdd" style="position:initial">
+                        @using (Html.BeginForm("AddInToCart", "Cart"))
+                        {
+                            @Html.Hidden("productId", b.id)
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <div>
+                                <button style="position:center; text-align:center" type="submit" value="Add item" class="btn-success">Add to cart</button>
+                            </div>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

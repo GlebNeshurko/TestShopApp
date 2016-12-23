@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "MasterLayout";
+}
+
+<head>@*всратые библиотеки*@
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("General page", "ItemsShow", "Solution", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav nav-pills">
+                    <li class="active" style="margin-top: 5px; margin-left: 5px"><a href="#">Главная</a>
+                    </li>
+                    <li class="dropdown" style="margin-top: 5px; margin-left: 5px">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true" aria-haspopup="true">
+                            Меню
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Текст подпункта</a></li>
+                            <li><a href="#">Текст подпункта</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Текст подпункта</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content" style="position: relative">
+        @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+        @RenderBody()
+        @*<hr />*@
+    </div>
+    <div style="text-align: center; position: relative">
+        <footer >
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+</body>
